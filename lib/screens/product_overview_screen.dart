@@ -45,6 +45,7 @@ class ProductOverviewScreen extends StatelessWidget {
         title: Text('My Shop'),
       ),
       body: GridView.builder(
+        padding: const EdgeInsets.all(10),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: 3 / 2,

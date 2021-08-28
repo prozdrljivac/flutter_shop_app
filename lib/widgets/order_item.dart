@@ -42,8 +42,10 @@ class _OrderItemState extends State<OrderItem> {
               child: ListView.builder(
                 itemCount: widget.order.products.length,
                 itemBuilder: (ctx, i) => Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                    vertical: 4,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -55,7 +57,8 @@ class _OrderItemState extends State<OrderItem> {
                         ),
                       ),
                       Text(
-                          '\$${widget.order.products[i].price} x ${widget.order.products[i].quantity}')
+                        '\$${widget.order.products[i].price} x ${widget.order.products[i].quantity}',
+                      )
                     ],
                   ),
                 ),

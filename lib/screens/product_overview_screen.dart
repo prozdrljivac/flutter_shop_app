@@ -6,6 +6,7 @@ import '../screens/cart_screen.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/badge.dart';
 import '../widgets/product_grid.dart';
+import '../providers/products.dart';
 
 enum ProductDisplay {
   FavoriteProducts,
@@ -19,6 +20,17 @@ class ProductOverviewScreen extends StatefulWidget {
 
 class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   var showFav = false;
+  var _isInit = true;
+  var _isLoading = false;
+
+  @override
+    void didChangeDependencies() {
+      if (_isInit) {
+        Provider.of<Products>(context).featchAndSetProducts();
+      }
+      _isInit = false;
+      super.didChangeDependencies();
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +75,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
         ],
       ),
       drawer: AppDrawer(),
-      body: ProductGrid(showFav),
+      body: _isLoading ? Center(child: CircularProgressIndicator(),) : ProductGrid(showFav),
     );
   }
 }
